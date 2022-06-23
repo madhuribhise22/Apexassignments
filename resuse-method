@@ -1,0 +1,33 @@
+public with sharing class PassParameterClass {
+string message;
+
+
+ Public void callMethod() {
+    String userName=userinfo.getUserName();
+    QueryMethod(userName);
+   QueryMethod2(userName);
+  }
+
+  public void QueryMethod(String  CurrentUserName) { 
+    List<COntact> conList= new List<COntact> ();
+    try {
+      conList=[select id ,firstname from Contact limit 1];
+    } catch (Exception e) {
+      ApexPages.addMessages(e);
+      message = 'Whoops! An error occurred -- ' + e.getMessage();      
+    }
+  }
+
+public void QueryMethod2(String  CurrentUserName) { 
+    List<Account> accList= new List<Account> ();
+    try {
+      accList=[select id ,name from Account  limit 1];
+    } catch (Exception e) {
+      ApexPages.addMessages(e);
+      message = 'Whoops! An error occurred -- ' + e.getMessage();      
+    }
+  }
+
+}
+//PassParameterClass b=new PassParameterClass();
+//b.callMethod();
