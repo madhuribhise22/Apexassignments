@@ -1,0 +1,9 @@
+trigger Email_not_changed on Contact (before update) { 
+    Contact o;  
+    for(Contact newcont: trigger.new) {   
+        o = Trigger.oldMap.get(newcont.Id);
+        if(newcont.Email != o.Email && o.Email!=NULL ) {
+            newcont.Email.addError('Email cannot be changed');         
+        }     
+    } 
+}
