@@ -1,0 +1,9 @@
+public class DisplayContacts {
+    public static List<Contact> displycontactrecords()
+    { 
+        List<Contact> con = [select ID,Name FROM contact];
+        System.debug('Display the select soql query values'+ con);
+
+        return Con;
+    }
+    }
