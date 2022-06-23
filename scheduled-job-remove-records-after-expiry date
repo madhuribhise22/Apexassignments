@@ -1,0 +1,14 @@
+global class Deleteposition implements Schedulable{
+
+global void execute(SchedulableContext SC) {
+    deleteposition();
+}
+
+public static void deleteposition() {
+
+    for(List<position__c> positionobj : [SELECT position__c FROM Position__c WHERE MileStone_Date__c <= :(Date.Today()) LIMIT 10])
+        {
+            delete positionobj;
+        }    
+}
+}
